@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:momentum_banking_app/ui/views/LoginPage.dart';
+import 'package:momentum_banking_app/ui/views/login_page.dart';
 import 'package:momentum_banking_app/ui/views/splash_screen.dart';
 
 void main() {

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-import 'LoginPage.dart';
+import 'login_page.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -20,12 +20,12 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   Future<Timer> loadData() async {
-    return new Timer(Duration(seconds: 10), onDoneLoading);
+    return new Timer(Duration(seconds: 8), onDoneLoading);
   }
 
   onDoneLoading() async {
     Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => Loginpage()));
+        .pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
   }
 
   @override

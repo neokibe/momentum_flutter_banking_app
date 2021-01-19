@@ -4,16 +4,16 @@ import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'HomePage.dart';
+import 'my_home_page.dart';
 
-class Loginpage extends StatefulWidget {
-  Loginpage({Key key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  LoginPage({Key key}) : super(key: key);
 
   @override
-  _LoginpageState createState() => _LoginpageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginpageState extends State<Loginpage> {
+class _LoginPageState extends State<LoginPage> {
   TextEditingController password;
   var _formKey = GlobalKey<FormState>();
   @override
