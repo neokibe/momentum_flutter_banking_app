@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'HomePage.dart';
@@ -13,7 +14,7 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginpageState extends State<Loginpage> {
-  TextEditingController mobilephone;
+  TextEditingController password;
   var _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class _LoginpageState extends State<Loginpage> {
                       ),
                     ),
                     Text(
-                      "MyBank App",
+                      "Momentum Bank App",
                       style: GoogleFonts.aBeeZee(
                         textStyle: TextStyle(
                           fontWeight: FontWeight.w500,
@@ -91,33 +92,24 @@ class _LoginpageState extends State<Loginpage> {
                           SizedBox(
                             height: 25,
                           ),
-                          TextFormField(
-                            controller: mobilephone,
-                            // ignore: missing_return
-                            validator: (String number) {
-                              if (number.isEmpty) {
-                                return "Please enter your mobile number";
-                              } else if (number.length != 10) {
-                                return "Please enter your mobile number correctly";
-                              }
-                            },
-                            inputFormatters: [
-                              WhitelistingTextInputFormatter.digitsOnly,
-                              new LengthLimitingTextInputFormatter(10),
-                            ],
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              labelText: "Enter your phone number",
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 16.0,
-                              ),
-                              prefixIcon: Icon(
-                                Icons.phone_iphone,
-                              ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 15.0, right: 15.0, top: 15, bottom: 0),
+                            child: TextFormField(
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Password',
+                                    hintText: 'Enter secure password'),
+                                validator: MultiValidator([
+                                  RequiredValidator(errorText: "* Required"),
+                                  MinLengthValidator(6,
+                                      errorText: "Password should be atleast 6 characters"),
+                                  MaxLengthValidator(15,
+                                      errorText:
+                                      "Password should not be greater than 15 characters")
+                                ])
+                              //validatePassword,        //Function to check validation
                             ),
                           ),
                           SizedBox(
@@ -138,8 +130,8 @@ class _LoginpageState extends State<Loginpage> {
                             ),
                             height: 53,
                             width: MediaQuery.of(context).size.width - 20,
-                            child: FlatButton(
-                              color: Colors.transparent,
+                            child: TextButton(
+
                               onPressed: () {
                                 if (_formKey.currentState.validate()) {
                                   Navigator.push(
@@ -150,6 +142,7 @@ class _LoginpageState extends State<Loginpage> {
                               },
                               child: Text(
                                 "Login",
+                                textAlign: TextAlign.center,
                                 style: GoogleFonts.aBeeZee(
                                   textStyle: TextStyle(
                                     color: Colors.white,
@@ -165,7 +158,6 @@ class _LoginpageState extends State<Loginpage> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 55),
                             child: Wrap(
-                            //  mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
                                   "Forgot Password ? ",
